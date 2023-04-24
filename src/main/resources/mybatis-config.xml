@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="HospitalInfoPO" type="org.lyy.graduationproject.idgs.infrastructure.PO.HospitalInfoPO" />
+        <typeAlias alias="DepartmentItemPO" type="org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentItemPO" />
+        <typeAlias alias="DepartmentPO" type="org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentPO" />
+        <typeAlias alias="DepartmentVO" type="org.lyy.graduationproject.idgs.infrastructure.VO.DepartmentVO" />
+    </typeAliases>
+</configuration>

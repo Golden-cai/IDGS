@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyy.graduationproject.idgs.mapper.DepartmentItemDao">
+
+    <resultMap id="DepartmentItemResultMap" type="DepartmentItemPO">
+        <id property="departmentItemId" javaType="java.lang.Long" column="department_item_id" />
+        <result property="departmentItemName" javaType="java.lang.String" column="department_item_name" />
+        <result property="departmentItemDescription" javaType="java.lang.String" column="department_item_description" />
+        <result property="departmentGrade" javaType="java.lang.String" column="department_grade" />
+        <result property="departmentFatherId" javaType="java.lang.Long" column="department_father_id" />
+    </resultMap>
+
+    <insert id="addDepartmentItem">
+        insert into department_item_t
+        (
+         department_item_id,
+         department_item_name,
+         department_item_description,
+         department_grade,
+         department_father_id
+        )
+        values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+             #{item.departmentItemId},
+             #{item.departmentItemName},
+             #{item.departmentItemDescription},
+             #{item.departmentGrade},
+             #{item.departmentFatherId}
+            )
+        </foreach>
+    </insert>
+
+    <select id="queryAllDepartmentItem" resultMap="DepartmentItemResultMap">
+        select
+            department_item_id,
+            department_item_name,
+            department_item_description,
+            department_grade,
+            department_father_id
+        from department_item_t
+    </select>
+
+
+</mapper>

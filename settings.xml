@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!-- 本地仓库的位置 -->
+    <localRepository>C:\Users\caugi\.m2\repository</localRepository>
+
+    <!-- 如果plugin没有指定groupId，会从设置的这些里查找。默认会有org.apache.maven.plugins和org.codehaus.mojo。 -->
+    <pluginGroups/>
+    <!-- 代理配置，可以配置多个，如果没有指定会使用第一个激活的配置。-->
+    <proxies/>
+
+    <!-- 私服发布的用户名密码 id需要与repository/mirror中的id相对应-->
+    <servers>
+        <!-- 私服发布的用户名密码 -->
+        <!--        <server>
+                    <id>nexus</id>
+                    <username>admin</username>
+                    <password>admin123</password>
+                </server> -->
+
+        <!-- 私服发布的privateKey -->
+        <!--         <server>
+                    <id>siteServer</id>
+                    <privateKey>/path/to/private/key</privateKey>
+                    <passphrase>optional; leave empty if not used.</passphrase>
+                </server> -->
+    </servers>
+
+    <!-- 镜像 -->
+    <mirrors>
+        <!-- 阿里云镜像 -->
+        <mirror>
+            <id>aliyunmaven</id>
+            <!-- 镜像的名字 -->
+            <name>阿里云公共仓库</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <!-- 被镜像的仓库的id, 必须与repository节点设置的 ID 一致。
+                | mirrorOf 的配置语法:
+                | central  表示该镜像为中央仓库的镜像，任何对于中央仓库的请求都会转至该镜像
+                | *  匹配所有远程仓库，这样的话所有在pom中定义的仓库都不生效了。
+                | external:*   匹配除localhost、使用file://协议外的所有远程仓库。
+                | repo1,repo2  匹配仓库repo1和repo2。
+                | *,!repo1    匹配所有远程仓库, repo1 除外。
+                |  mirror（setting.xml）> repository（pom.xml） > repository（setting.xml）
+            |-->
+            <mirrorOf>center</mirrorOf>
+        </mirror>
+
+    </mirrors>
+
+    <!--
+    - setting中的profile主要为了提供本地的路径以及定义构建中要使用到的仓库。
+    - setting中的profile一般存放的是不太会变且不会影响构建过程的元素，对全局都影响。
+    - pom中的profile有更多的设置项，但是影响范围只有自身以及子模块。
+    - 配置: java8, 先从阿里云下载, 没有再去私服下载
+    -->
+    <profiles>
+        <!-- 全局JDK1.8配置 -->
+        <profile>
+            <id>jdk1.8</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>1.8</jdk>
+            </activation>
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+
+<!--        &lt;!&ndash; 私服参库 &ndash;&gt;-->
+<!--        <profile>-->
+<!--            &lt;!&ndash; 配置唯一ID &ndash;&gt;-->
+<!--            <id>demo_id</id>-->
+<!--            <repositories>-->
+<!--                <repository>-->
+<!--                    &lt;!&ndash; 参库唯一ID &ndash;&gt;-->
+<!--                    <id>repo_id</id>-->
+<!--                    &lt;!&ndash; 参库名称 &ndash;&gt;-->
+<!--                    <name>demo_name</name>-->
+<!--                    &lt;!&ndash; 参库地址 &ndash;&gt;-->
+<!--                    <url>http://repo1.maven.org/maven2/</url>-->
+<!--                    &lt;!&ndash; 是否开启发布版构件下载 &ndash;&gt;-->
+<!--                    <releases>-->
+<!--                        <enabled>true</enabled>-->
+<!--                    </releases>-->
+<!--                    &lt;!&ndash; 是否开启快照版构件下载 &ndash;&gt;-->
+<!--                    <snapshots>-->
+<!--                        <enabled>true</enabled>-->
+<!--                    </snapshots>-->
+<!--                </repository>-->
+<!--            </repositories>-->
+<!--            &lt;!&ndash; 插件参库配置 &ndash;&gt;-->
+<!--            <pluginRepositories>-->
+<!--                <pluginRepository>-->
+<!--                    <id>repo_id</id>-->
+<!--                    <name>demo_name</name>-->
+<!--                    <url>http://repo1.maven.org/maven2/</url>-->
+<!--                </pluginRepository>-->
+<!--            </pluginRepositories>-->
+<!--        </profile>-->
+
+
+    </profiles>
+
+<!--    &lt;!&ndash; 激活配置 &ndash;&gt;-->
+<!--    <activeProfiles>-->
+<!--        <activeProfile>jdk1.8</activeProfile>-->
+<!--        <activeProfile>demo_id</activeProfile>-->
+<!--    </activeProfiles>-->
+</settings>

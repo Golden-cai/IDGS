@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyy.graduationproject.idgs.mapper.HospitalDao">
+
+    <resultMap id="HospitalResultMap" type="HospitalInfoPO">
+        <id property="hospitalId" javaType="java.lang.Long" column="hospital_id" />
+        <result property="hospitalName" javaType="java.lang.String" column="hospital_name" />
+        <result property="hospitalGrade" javaType="java.lang.String" column="hospital_grade" />
+        <result property="hospitalAddress" javaType="java.lang.String" column="hospital_address" />
+        <result property="hospitalIntroduce" javaType="java.lang.String" column="hospital_introduce" />
+        <result property="hospitalPresidentName" javaType="java.lang.String" column="hospital_president_name" />
+    </resultMap>
+
+    <!--select查询语句-->
+    <select id="queryAllHospital" resultMap="HospitalResultMap">
+        select
+            hospital_id,
+            hospital_name,
+            hospital_grade,
+            hospital_address,
+            hospital_introduce,
+            hospital_president_name
+        from hospital_info_t
+    </select>
+
+</mapper>

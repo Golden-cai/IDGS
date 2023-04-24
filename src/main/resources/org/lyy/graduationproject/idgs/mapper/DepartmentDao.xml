@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyy.graduationproject.idgs.mapper.DepartmentDao">
+
+    <resultMap id="DepartmentVOResultMap" type="DepartmentVO">
+        <id property="departmentId" javaType="java.lang.Long" column="department_id" />
+        <result property="departmentItemId" javaType="java.lang.Long" column="department_item_id" />
+        <result property="hospitalId" javaType="java.lang.Long" column="hospital_id" />
+        <result property="departmentAddress" javaType="java.lang.String" column="department_address" />
+        <result property="departmentDescription" javaType="java.lang.String" column="department_description" />
+        <result property="departmentItemName" javaType="java.lang.String" column="department_item_name" />
+        <result property="departmentItemDescription" javaType="java.lang.String" column="department_item_description" />
+        <result property="departmentGrade" javaType="java.lang.String" column="department_grade" />
+        <result property="departmentFatherId" javaType="java.lang.Long" column="department_father_id" />
+    </resultMap>
+
+    <insert id="addDepartment">
+        insert into department_t
+        (
+        department_id,
+        department_item_id,
+        hospital_id,
+        department_address,
+        department_description,
+        create_time,
+        create_by,
+        last_update_time,
+        last_update_by
+        )
+        values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.departmentId},
+            #{item.departmentItemId},
+            #{item.hospitalId},
+            #{item.departmentAddress},
+            #{item.departmentDescription},
+            now(),
+            #{item.createBy},
+            now(),
+            #{item.lastUpdateBy}
+            )
+        </foreach>
+    </insert>
+
+    <select id="queryDepartment" resultMap="DepartmentVOResultMap">
+        select
+            t1.department_id,
+            t1.department_item_id,
+            t1.hospital_id,
+            t1.department_address,
+            t1.department_description,
+            t2.department_item_name,
+            t2.department_item_description,
+            t2.department_grade,
+            t2.department_father_id
+        from department_t t1
+        join department_item_t t2
+        where t1.department_item_id = t2.department_item_id
+        and t1.hospital_id = #{hospitalId}
+    </select>
+
+
+
+</mapper>
