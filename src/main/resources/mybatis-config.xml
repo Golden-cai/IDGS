@@ -8,5 +8,6 @@
         <typeAlias alias="DepartmentItemPO" type="org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentItemPO" />
         <typeAlias alias="DepartmentPO" type="org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentPO" />
         <typeAlias alias="DepartmentVO" type="org.lyy.graduationproject.idgs.infrastructure.VO.DepartmentVO" />
+        <typeAlias alias="DoctorInfoPO" type="org.lyy.graduationproject.idgs.infrastructure.PO.DoctorInfoPO" />
     </typeAliases>
 </configuration>

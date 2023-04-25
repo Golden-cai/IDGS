@@ -9,6 +9,7 @@ import org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentItemPO;
 import org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentPO;
 import org.lyy.graduationproject.idgs.infrastructure.PO.HospitalInfoPO;
 import org.lyy.graduationproject.idgs.infrastructure.Response.DepartmentResponse;
+import org.lyy.graduationproject.idgs.infrastructure.Response.HospitalInfoResponse;
 import org.lyy.graduationproject.idgs.infrastructure.VO.DepartmentVO;
 import org.lyy.graduationproject.idgs.mapper.DepartmentDao;
 import org.lyy.graduationproject.idgs.mapper.DepartmentItemDao;
@@ -78,9 +79,6 @@ public class HospitalService implements IHospitalService {
         } catch (SQLException e) {
             logger.error("addAllDepartmentForHospital: sql exception", e);
             throw new ApplicationException(WebResultEnum.SQL_EXCEPTION);
-        } catch (NullPointerException e) {
-            logger.error("queryAllAllDepartmentByHospital: params is error", e);
-            throw new ApplicationException(WebResultEnum.PARAM_ERROE);
         }
     }
 

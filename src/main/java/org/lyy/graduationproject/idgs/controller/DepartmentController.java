@@ -4,15 +4,15 @@ import org.lyy.graduationproject.idgs.infrastructure.BaseVO.ApplicationException
 import org.lyy.graduationproject.idgs.infrastructure.BaseVO.Request;
 import org.lyy.graduationproject.idgs.infrastructure.BaseVO.Response;
 import org.lyy.graduationproject.idgs.infrastructure.BaseVO.ResponseUtil;
-import org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentItemPO;
 import org.lyy.graduationproject.idgs.infrastructure.request.DepartmentItemRequest;
 import org.lyy.graduationproject.idgs.service.IDepartmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * description: DepartmentController

@@ -44,5 +44,4 @@
         from department_item_t
     </select>
 
-
 </mapper>

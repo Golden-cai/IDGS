@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyy.graduationproject.idgs.mapper.DoctorInfoDao">
+
+    <resultMap id="DoctorInfoResultMap" type="DoctorInfoPO">
+        <id property="doctorId" javaType="java.lang.Long" column="doctor_id" />
+        <result property="doctorName" javaType="java.lang.String" column="doctor_name" />
+        <result property="doctorTitle" javaType="java.lang.String" column="doctor_title" />
+        <result property="departmentId" javaType="java.lang.Long" column="department_id" />
+        <result property="doctorProfession" javaType="java.lang.String" column="doctor_profession" />
+        <result property="doctorIntroduce" javaType="java.lang.String" column="doctor_introduce" />
+        <result property="doctorGender" javaType="java.lang.String" column="doctor_gender" />
+        <result property="doctorEducation" javaType="java.lang.String" column="doctor_education" />
+        <result property="doctorTel" javaType="java.lang.String" column="doctor_tel" />
+        <result property="doctorBirth" javaType="java.lang.String" column="doctor_birth" />
+        <result property="doctorPhoto" javaType="java.lang.String" column="doctor_photo" />
+        <result property="createTime" javaType="java.util.Date" column="create_time" />
+        <result property="createBy" javaType="java.lang.Long" column="create_by" />
+        <result property="lastUpdateTime" javaType="java.util.Date" column="last_update_time" />
+        <result property="lastUpdateBy" javaType="java.lang.Long" column="last_update_by" />
+    </resultMap>
+
+    <insert id="addDoctorInfo">
+        insert into doctor_info_t
+        (
+            doctor_id,
+            doctor_name,
+            doctor_title,
+            department_id,
+            doctor_profession,
+            doctor_introduce,
+            doctor_gender,
+            doctor_education,
+            doctor_tel,
+            doctor_birth,
+            doctor_photo,
+            create_time,
+            create_by,
+            last_update_time,
+            last_update_by
+        )
+        values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.doctorId},
+            #{item.doctorName},
+            #{item.doctorTitle},
+            #{item.departmentId},
+            #{item.doctorProfession},
+            #{item.doctorIntroduce},
+            #{item.doctorGender},
+            #{item.doctorEducation},
+            #{item.doctorTel},
+            #{item.doctorBirth},
+            #{item.doctorPhoto},
+            now(),
+            #{item.createBy},
+            now(),
+            #{item.lastUpdateBy}
+            )
+        </foreach>
+    </insert>
+
+    <select id="queryDoctorById" resultMap="DoctorInfoResultMap">
+        select
+            doctor_id,
+            doctor_name,
+            doctor_title,
+            department_id,
+            doctor_profession,
+            doctor_introduce,
+            doctor_gender,
+            doctor_education,
+            doctor_tel,
+            doctor_birth,
+            doctor_photo,
+            create_time,
+            create_by,
+            last_update_time,
+            last_update_by
+        from doctor_info_t
+            last_update_by
+        where doctor_id = #{doctorId}
+    </select>
+
+</mapper>

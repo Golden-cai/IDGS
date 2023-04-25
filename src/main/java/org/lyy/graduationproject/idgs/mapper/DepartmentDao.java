@@ -1,7 +1,6 @@
 package org.lyy.graduationproject.idgs.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentItemPO;
 import org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentPO;
 import org.lyy.graduationproject.idgs.infrastructure.VO.DepartmentVO;
 
@@ -16,8 +15,6 @@ import java.util.List;
  */
 @Mapper
 public interface DepartmentDao {
-
-
     /**
      * @Description: 添加医院-科室信息
      *
@@ -27,7 +24,15 @@ public interface DepartmentDao {
      */
     int addDepartment(List<DepartmentPO> departmentPOList) throws SQLException;
 
-    List<DepartmentVO> queryDepartment(Long hospitalId)throws SQLException;
+
+    /**
+     * @Description: 根据hospitalID查询科室
+     *
+     * @param  hospitalId
+     * @return DepartmentVO
+     * @throws
+     */
+    List<DepartmentVO> queryDepartment(Long hospitalId) throws SQLException;
 
 
 }

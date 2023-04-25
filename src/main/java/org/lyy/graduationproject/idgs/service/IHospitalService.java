@@ -4,6 +4,7 @@ import org.lyy.graduationproject.idgs.infrastructure.BaseVO.ApplicationException
 import org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentPO;
 import org.lyy.graduationproject.idgs.infrastructure.PO.HospitalInfoPO;
 import org.lyy.graduationproject.idgs.infrastructure.Response.DepartmentResponse;
+import org.lyy.graduationproject.idgs.infrastructure.Response.HospitalInfoResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
