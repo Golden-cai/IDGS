@@ -82,8 +82,29 @@
             last_update_time,
             last_update_by
         from doctor_info_t
-            last_update_by
         where doctor_id = #{doctorId}
+    </select>
+
+    <select id="queryAllDoctorByDepartmentId" resultMap="DoctorInfoResultMap">
+        select
+            doctor_id,
+            doctor_name,
+            doctor_title,
+            department_id,
+            doctor_profession,
+            doctor_introduce,
+            doctor_gender,
+            doctor_education,
+            doctor_tel,
+            doctor_birth,
+            doctor_photo,
+            create_time,
+            create_by,
+            last_update_time,
+            last_update_by
+        from doctor_info_t
+        where department_id = #{departmentId}
+
     </select>
 
 </mapper>

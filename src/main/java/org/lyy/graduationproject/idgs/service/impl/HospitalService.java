@@ -9,7 +9,6 @@ import org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentItemPO;
 import org.lyy.graduationproject.idgs.infrastructure.PO.DepartmentPO;
 import org.lyy.graduationproject.idgs.infrastructure.PO.HospitalInfoPO;
 import org.lyy.graduationproject.idgs.infrastructure.Response.DepartmentResponse;
-import org.lyy.graduationproject.idgs.infrastructure.Response.HospitalInfoResponse;
 import org.lyy.graduationproject.idgs.infrastructure.VO.DepartmentVO;
 import org.lyy.graduationproject.idgs.mapper.DepartmentDao;
 import org.lyy.graduationproject.idgs.mapper.DepartmentItemDao;

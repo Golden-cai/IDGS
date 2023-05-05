@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyy.graduationproject.idgs.mapper.DoctorShiftsDao">
+
+    <resultMap id="DoctorShiftsResultMap" type="DoctorShiftsPO">
+        <id property="shiftsId" javaType="java.lang.Long" column="shifts_id" />
+        <result property="doctorId" javaType="java.lang.Long" column="doctor_id" />
+        <result property="shiftsStatus" javaType="java.lang.String" column="shifts_status" />
+        <result property="shiftsDay" javaType="java.lang.Integer" column="shifts_day" />
+        <result property="startTime" javaType="java.util.Date" column="start_time" />
+        <result property="endTime" javaType="java.util.Date" column="end_time" />
+        <result property="shiftsTotalNumber" javaType="java.lang.Integer" column="shifts_total_number" />
+        <result property="shiftsAmount" javaType="java.lang.Double" column="shifts_amount" />
+        <result property="createTime" javaType="java.util.Date" column="create_time" />
+        <result property="createBy" javaType="java.lang.Long" column="create_by" />
+        <result property="lastUpdateTime" javaType="java.util.Date" column="last_update_time" />
+        <result property="lastUpdateBy" javaType="java.lang.Long" column="last_update_by" />
+    </resultMap>
+
+    <insert id="addShifts">
+        insert into doctor_shifts_t
+        (
+            shifts_id,
+            doctor_id,
+            shifts_status,
+            shifts_day,
+            start_time,
+            end_time,
+            shifts_total_number,
+            shifts_amount,
+            create_time,
+            create_by,
+            last_update_time,
+            last_update_by
+        )
+        values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.shiftsId},
+            #{item.doctorId},
+            #{item.shiftsStatus},
+            #{item.shiftsDay},
+            #{item.startTime},
+            #{item.endTime},
+            #{item.shiftsTotalNumber},
+            #{item.shiftsAmount},
+             now(),
+            #{item.createBy},
+            now(),
+            #{item.lastUpdateBy}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateShiftsStatusNotUse">
+        update doctor_shifts_t
+        set
+            shifts_status = '2',
+            last_update_time = now(),
+            last_update_by = -1
+        where
+            doctor_id = #{doctorId}
+        and
+            shifts_status = '1'
+    </update>
+
+    <update id="updateShiftsStatusByShiftId">
+        update doctor_shifts_t
+        set
+            shifts_status = #{shiftsId},
+            last_update_time = now(),
+            last_update_by = -1
+        where
+            shiftsId = #{shiftsId}
+
+    </update>
+
+    <select id="queryDoctorShifts" resultMap="DoctorShiftsResultMap">
+        select
+            shifts_id,
+            doctor_id,
+            shifts_status,
+            shifts_day,
+            start_time,
+            end_time,
+            shifts_total_number,
+            shifts_remaining_number,
+            shifts_amount,
+            create_time,
+            create_by,
+            last_update_time,
+            last_update_by
+        from doctor_shifts_t
+        where doctor_id = #{doctorId}
+        and shifts_status = #{status}
+    </select>
+
+    <insert id="addShiftsRecord">
+        insert into shifts_record_t
+        (
+            shifts_record_id,
+            shifts_id,
+            shifts_time,
+            shifts_remain_number,
+            create_time,
+            create_by,
+            last_update_time,
+            last_update_by
+        )
+        values
+        (
+            #{shiftsRecordId},
+            #{shiftsId},
+            #{shiftsTime},
+            #{shiftsRemainNumber},
+            now(),
+            #{createBy},
+            now(),
+            #{lastUpdateBy}
+        )
+    </insert>
+
+    <select id="queryDoctorShiftRecord" resultType="ShiftsRecordVO">
+        select
+            shifts_record_id as shiftsRecordId,
+            shifts_id as shiftsId,
+            shifts_time as shiftsTime,
+            shifts_remain_number as shiftsRemainNumber
+        from shifts_record_t
+        where shifts_id = #{shiftsId}
+        and  shifts_time = #{time}
+    </select>
+
+</mapper>

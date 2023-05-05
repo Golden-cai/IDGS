@@ -5,9 +5,7 @@ import cn.hutool.core.util.IdUtil;
 import org.lyy.graduationproject.idgs.infrastructure.BaseVO.ApplicationException;
 import org.lyy.graduationproject.idgs.infrastructure.BaseVO.WebResultEnum;
 import org.lyy.graduationproject.idgs.infrastructure.PO.DoctorInfoPO;
-import org.lyy.graduationproject.idgs.infrastructure.Response.DoctorResponse;
 import org.lyy.graduationproject.idgs.infrastructure.request.DoctorInfoRequest;
-import org.lyy.graduationproject.idgs.mapper.DepartmentItemDao;
 import org.lyy.graduationproject.idgs.mapper.DoctorInfoDao;
 import org.lyy.graduationproject.idgs.service.IDoctorService;
 import org.slf4j.Logger;
@@ -15,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
 import java.sql.SQLException;
 import java.util.List;
 

@@ -9,13 +9,15 @@ import org.apache.ibatis.jdbc.SQL;
  * version: 1.0
  */
 public enum WebResultEnum {
-    SUCCESS("0000", "success"),
-    FAIL("9999", "fail"),
-    SQL_EXCEPTION("1000", "execute sql exception"),
+    SUCCESS("0000", "Success"),
+    FAIL("9999", "Fail"),
+    SQL_EXCEPTION("1000", "Execute sql exception"),
 
-    PARAM_NULL("1001", "params null"),
+    PARAM_NULL("1001", "Params null"),
 
-    PARAM_ERROE("1002", "params error");
+    PARAM_ERROE("1002", "Params error"),
+
+    QUERY_SHIFTS_ERROR("2001", "More than one effective shifts");
 
 
     private Result errorResult;

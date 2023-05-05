@@ -1,5 +1,7 @@
 package org.lyy.graduationproject.idgs.infrastructure.BaseVO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,10 +14,12 @@ import java.util.Date;
 public class BasePO implements Serializable {
     private static final long serialVersionUID =  1567558288662304842L;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
 
     private Long createBy;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date lastUpdateTime;
 
     private Long lastUpdateBy;
