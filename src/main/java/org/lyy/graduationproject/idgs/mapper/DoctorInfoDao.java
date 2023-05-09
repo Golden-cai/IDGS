@@ -3,7 +3,6 @@ package org.lyy.graduationproject.idgs.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.lyy.graduationproject.idgs.infrastructure.PO.DoctorInfoPO;
 
-import javax.print.Doc;
 import java.sql.SQLException;
 import java.util.List;
 

@@ -32,4 +32,12 @@ public class ResponseUtil {
         response.setResult(result);
         return response;
     }
+
+    public static final <T> Response fail() {
+        Response response =  new Response();
+        response.setResult(new Result(
+                WebResultEnum.FAIL.getErrorResult().getCode(),
+                WebResultEnum.FAIL.getErrorResult().getMsg()));
+        return response;
+    }
 }

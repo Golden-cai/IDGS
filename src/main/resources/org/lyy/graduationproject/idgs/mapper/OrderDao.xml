@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyy.graduationproject.idgs.mapper.OrderDao">
+
+
+    <insert id="addOrder">
+        insert into order_t
+        (
+            order_id,
+            user_id,
+            shifts_record_id,
+            order_amount,
+            order_status,
+            create_time,
+            create_by,
+            last_update_time,
+            last_update_by
+        )
+        values
+        (
+            #{orderId},
+            #{userId},
+            #{shiftsRecordId},
+            #{orderAmount},
+            #{orderStatus},
+             now(),
+            #{createBy},
+             now(),
+            #{lastUpdateBy}
+        )
+    </insert>
+
+    <update id="updateOrderStatus">
+        update order_t
+        set order_status = #{status},
+            last_update_time = now(),
+            last_update_by = -1
+        where order_id = #{orderId}
+    </update>
+
+    <select id="queryOrderById" resultType="OrderDetailVO">
+
+    </select>
+</mapper>

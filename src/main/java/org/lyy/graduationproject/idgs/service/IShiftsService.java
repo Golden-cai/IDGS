@@ -2,7 +2,6 @@ package org.lyy.graduationproject.idgs.service;
 
 import org.lyy.graduationproject.idgs.infrastructure.BaseVO.ApplicationException;
 import org.lyy.graduationproject.idgs.infrastructure.VO.DoctorShiftsRecordVO;
-import org.lyy.graduationproject.idgs.infrastructure.VO.DoctorShiftsVO;
 import org.lyy.graduationproject.idgs.infrastructure.request.DoctorShiftsRequest;
 
 import java.util.List;

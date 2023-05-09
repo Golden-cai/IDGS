@@ -11,6 +11,8 @@
         <typeAlias alias="DoctorInfoPO" type="org.lyy.graduationproject.idgs.infrastructure.PO.DoctorInfoPO" />
         <typeAlias alias="DoctorShiftsPO" type="org.lyy.graduationproject.idgs.infrastructure.PO.DoctorShiftsPO" />
         <typeAlias alias="ShiftsRecordVO" type="org.lyy.graduationproject.idgs.infrastructure.VO.ShiftsRecordVO" />
+        <typeAlias alias="UserInfoPO" type="org.lyy.graduationproject.idgs.infrastructure.PO.UserInfoPO" />
+        <typeAlias alias="OrderDetailVO" type="org.lyy.graduationproject.idgs.infrastructure.VO.OrderDetailVO" />
 
     </typeAliases>
 </configuration>
